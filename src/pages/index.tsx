@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
   return (
@@ -47,6 +46,9 @@ const Home: NextPage = () => {
             description="Build data-driven JavaScript & TypeScript apps in less time"
             documentation="https://www.prisma.io/docs/"
           />
+          <button type="button" className="bg-amber-600">
+            hoge
+          </button>
         </div>
       </main>
     </>
