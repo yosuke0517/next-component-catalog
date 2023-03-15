@@ -1,8 +1,6 @@
-// src/pages/_app.tsx
-import "../styles/globals.css";
-import type { AppType } from "next/app";
+import "~/styles/globals.css";
 import { SessionProvider } from "next-auth/react";
-import { trpc } from "../utils/trpc";
+import type { AppProps, AppType } from "next/app";
 import { Session } from "next-auth";
 
 const MyApp: AppType<{ session: Session | null }> = ({
@@ -16,4 +14,4 @@ const MyApp: AppType<{ session: Session | null }> = ({
   );
 };
 
-export default trpc.withTRPC(MyApp);
+export default MyApp;

@@ -8,7 +8,7 @@ type Props = {
 
 export const Layout: FC<Props> = ({
   children,
-  title = "T3 Stack Component Catalog",
+  title = "Next.js Component Catalog",
 }) => {
   return (
     <>
