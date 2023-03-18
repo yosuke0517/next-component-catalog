@@ -1,4 +1,4 @@
-import "../src/styles/globals.css";
+import "../styles/globals.css";
 import { themes } from "@storybook/theming";
 
 import * as NextImage from "next/image";
