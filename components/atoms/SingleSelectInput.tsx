@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 interface Option {
-  value: string;
+  value: number;
   label: string;
 }
 
