@@ -42,10 +42,11 @@ export const MultiSelectInput: FC<InputSelectProps> = ({ options }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <div className="flex">
+        <ul className="flex flex-wrap gap-2">
         {selectedOptions.map((optionValue) => (
-          <label key={optionValue} className="flex items-center">
+          <li key={optionValue} className="flex items-center">
             <span className="ml-2 rounded-3xl bg-blue-500 p-3 font-bold text-white">
               {selectedLabel(optionValue)}
             </span>
@@ -53,11 +54,13 @@ export const MultiSelectInput: FC<InputSelectProps> = ({ options }) => {
               onClick={() => removeItem(optionValue)}
               className="ml-1 h-4 w-4 cursor-pointer"
             />
-          </label>
+          </li>
         ))}
+        </ul>
+        
       </div>
 
-      <div className="flex">
+      <div className="flex relative mt-2">
         <select
           id="my-select"
           onChange={handleSelectChange}
