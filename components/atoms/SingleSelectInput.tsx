@@ -1,13 +1,10 @@
 import React, { FC, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { SelectOption } from "~/types";
 
-interface Option {
-  value: number;
-  label: string;
-}
 
-interface InputSelectProps {
-  options: Option[];
+export type InputSelectProps = {
+  options: SelectOption[];
 }
 
 export const SingleSelectInput: FC<InputSelectProps> = ({ options }) => {
@@ -27,8 +24,8 @@ export const SingleSelectInput: FC<InputSelectProps> = ({ options }) => {
       >
         <option value="">選択してください</option>
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
+          <option key={option.id} value={option.id}>
+            {option.name}
           </option>
         ))}
       </select>

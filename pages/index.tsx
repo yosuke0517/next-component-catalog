@@ -10,9 +10,9 @@ import { XMarkIcon } from "@heroicons/react/20/solid";
 import React from "react";
 
 const options = [
-  { value: 0, label: "Option 1" },
-  { value: 1, label: "Option 2" },
-  { value: 2, label: "Option 3" },
+  { id: 0, name: "Option 1" },
+  { id: 1, name: "Option 2" },
+  { id: 2, name: "Option 3" },
 ];
 
 const Home: NextPage = () => {
@@ -36,7 +36,6 @@ const Home: NextPage = () => {
       </ActionButton>
       <SingleSelectInput options={options} />
       <MultiSelectInput options={options} />
-      <XMarkIcon />
     </Layout>
   );
 };
