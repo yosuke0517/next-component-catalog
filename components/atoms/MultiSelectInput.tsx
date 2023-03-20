@@ -1,18 +1,13 @@
 import React, { FC, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { XMarkIcon } from "@heroicons/react/20/solid";
-import { displayName } from "@design-systems/utils";
+import { SelectOption } from "~/types";
 
-interface Option {
-  value: number;
-  label: string;
+export type IMultiSelectInputProps = {
+  options: SelectOption[];
 }
 
-interface InputSelectProps {
-  options: Option[];
-}
-
-export const MultiSelectInput: FC<InputSelectProps> = ({ options }) => {
+export const MultiSelectInput: FC<IMultiSelectInputProps> = ({ options }) => {
   const [selectedOptions, setSelectedOption] = useState<number[]>([]);
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -20,7 +15,7 @@ export const MultiSelectInput: FC<InputSelectProps> = ({ options }) => {
   };
 
   const selectableOptions = () => {
-    return options.filter((option) => !selectedOptions.includes(option.value));
+    return options.filter((option) => !selectedOptions.includes(option.id));
   };
 
   const removeItem = (removeItem: number) => {
@@ -36,9 +31,9 @@ export const MultiSelectInput: FC<InputSelectProps> = ({ options }) => {
   };
 
   const selectedLabel = (item: number) => {
-    const selectedItem = options.find((option) => option.value === item);
+    const selectedItem = options.find((option) => option.id === item);
     if (!selectedItem) return "";
-    return selectedItem.label;
+    return selectedItem.name;
   };
 
   return (
@@ -47,7 +42,7 @@ export const MultiSelectInput: FC<InputSelectProps> = ({ options }) => {
         <ul className="flex flex-wrap gap-2">
         {selectedOptions.map((optionValue) => (
           <li key={optionValue} className="flex items-center">
-            <span className="ml-2 rounded-3xl bg-blue-500 p-3 font-bold text-white">
+            <span className="ml-2 rounded-3xl bg-blue-500 px-2 py-1 text-sm font-bold text-white">
               {selectedLabel(optionValue)}
             </span>
             <XMarkIcon
@@ -68,8 +63,8 @@ export const MultiSelectInput: FC<InputSelectProps> = ({ options }) => {
         >
           <option value="">選択してください</option>
           {selectableOptions().map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
+            <option key={option.id} value={option.id}>
+              {option.name}
             </option>
           ))}
         </select>
