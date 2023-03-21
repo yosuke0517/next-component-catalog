@@ -1,12 +1,12 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { MouseEventHandler, ReactNode } from 'react';
-import { MultiSelectInput, MultiSelectInputProps } from './MultiSelectInput';
+import { TagList, TabListProps } from './TagList';
 // @ts-ignore // mdxでドキュメントも作成することができる（今回はパス）
 // import MDXDocument from "./AttachableIconButton.mdx";
 
 export default {
-  title: 'MultiSelectInput',
-  component: MultiSelectInput,
+  title: 'TagList',
+  component: TagList,
   argTypes: {
     // propsに渡すvariantをStorybookから変更できるように追加
     type: {
@@ -26,7 +26,7 @@ export default {
       // page: MDXDocument,
     },
   },
-} as ComponentMeta<typeof MultiSelectInput>;
+} as ComponentMeta<typeof TagList>;
 
 const options = [
   { id: 0, name: 'Option 1' },
@@ -36,18 +36,18 @@ const options = [
 
 export const Main = (
   props: JSX.IntrinsicAttributes & {
-    type: MultiSelectInputProps;
+    type: TabListProps;
     callback?: MouseEventHandler<HTMLButtonElement> | undefined;
     children: ReactNode;
   }
 ) => {
-  return <MultiSelectInput options={options} />;
+  return <TagList tagList={options} />;
 };
 
 // テンプレートコンポーネントを実装
 // Storybookから渡されたpropsをそのままButtonに渡す
-const Template: ComponentStory<typeof MultiSelectInput> = (args) => (
-  <MultiSelectInput {...args} />
+const Template: ComponentStory<typeof TagList> = (args) => (
+  <TagList {...args} />
 );
 
 // bindを呼び出しStoryを作成
@@ -55,5 +55,5 @@ export const TemplateTest = Template.bind({});
 
 // デフォルトのpropsを設定する
 TemplateTest.args = {
-  options: options,
+  tagList: options,
 };

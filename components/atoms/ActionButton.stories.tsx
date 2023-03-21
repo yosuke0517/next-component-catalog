@@ -1,23 +1,23 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { MouseEventHandler, ReactNode } from "react";
-import { ActionButton, ActionButtonType } from "./ActionButton";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { MouseEventHandler, ReactNode } from 'react';
+import { ActionButton, ActionButtonType } from './ActionButton';
 // @ts-ignore // mdxでドキュメントも作成することができる（今回はパス）
 // import MDXDocument from "./AttachableIconButton.mdx";
 
 export default {
-  title: "ActionButton",
+  title: 'ActionButton',
   component: ActionButton,
   argTypes: {
     // propsに渡すvariantをStorybookから変更できるように追加
     type: {
       // ラジオボタンで設定できるように指定
-      control: { type: "radio" },
-      options: ["main", "sub"],
+      control: { type: 'radio' },
+      options: ['main', 'sub'],
     },
     // propsに渡すchildrenをStorybookから変更できるように追加
     children: {
       // テキストボックスで入力できるように指定
-      control: { type: "text" },
+      control: { type: 'text' },
     },
   },
   parameters: {
@@ -29,7 +29,7 @@ export default {
 } as ComponentMeta<typeof ActionButton>;
 
 const callback = () => {
-  alert("callback!!");
+  alert('callback!!');
 };
 
 export const Main = (
@@ -81,7 +81,7 @@ export const TemplateTest = Template.bind({});
 
 // デフォルトのpropsを設定する
 TemplateTest.args = {
-  type: "main",
+  type: 'main',
   callback,
   children: <span>画面上でPropsが触れるヤツ</span>,
 };

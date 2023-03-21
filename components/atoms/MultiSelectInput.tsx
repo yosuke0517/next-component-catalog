@@ -1,11 +1,11 @@
-import React, { FC, useState } from "react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { XMarkIcon } from "@heroicons/react/20/solid";
-import { SelectOption } from "~/types";
+import React, { FC, useState } from 'react';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { XMarkIcon } from '@heroicons/react/20/solid';
+import { ISelectOption } from '~/types';
 
 export type MultiSelectInputProps = {
-  options: SelectOption[];
-}
+  options: ISelectOption[];
+};
 
 export const MultiSelectInput: FC<MultiSelectInputProps> = ({ options }) => {
   const [selectedOptions, setSelectedOption] = useState<number[]>([]);
@@ -32,7 +32,7 @@ export const MultiSelectInput: FC<MultiSelectInputProps> = ({ options }) => {
 
   const selectedLabel = (item: number) => {
     const selectedItem = options.find((option) => option.id === item);
-    if (!selectedItem) return "";
+    if (!selectedItem) return '';
     return selectedItem.name;
   };
 
@@ -40,22 +40,21 @@ export const MultiSelectInput: FC<MultiSelectInputProps> = ({ options }) => {
     <div className="relative w-full">
       <div className="flex">
         <ul className="flex flex-wrap gap-2">
-        {selectedOptions.map((optionValue) => (
-          <li key={optionValue} className="flex items-center">
-            <span className="ml-2 rounded-3xl bg-blue-500 px-2 py-1 text-sm font-bold text-white">
-              {selectedLabel(optionValue)}
-            </span>
-            <XMarkIcon
-              onClick={() => removeItem(optionValue)}
-              className="ml-1 h-4 w-4 cursor-pointer"
-            />
-          </li>
-        ))}
+          {selectedOptions.map((optionValue) => (
+            <li key={optionValue} className="flex items-center">
+              <span className="ml-2 rounded-3xl bg-blue-500 px-2 py-1 text-sm font-bold text-white">
+                {selectedLabel(optionValue)}
+              </span>
+              <XMarkIcon
+                onClick={() => removeItem(optionValue)}
+                className="ml-1 h-4 w-4 cursor-pointer"
+              />
+            </li>
+          ))}
         </ul>
-        
       </div>
 
-      <div className="flex relative mt-2">
+      <div className="relative mt-2 flex">
         <select
           id="my-select"
           onChange={handleSelectChange}

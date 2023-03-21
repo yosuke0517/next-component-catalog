@@ -1,10 +1,10 @@
 import React, { FC, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { SelectOption } from "~/types";
+import { ISelectOption } from "~/types";
 
 
 export type InputSelectProps = {
-  options: SelectOption[];
+  options: ISelectOption[];
 }
 
 export const SingleSelectInput: FC<InputSelectProps> = ({ options }) => {
