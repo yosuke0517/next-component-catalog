@@ -3,11 +3,11 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import { SelectOption } from "~/types";
 
-export type IMultiSelectInputProps = {
+export type MultiSelectInputProps = {
   options: SelectOption[];
 }
 
-export const MultiSelectInput: FC<IMultiSelectInputProps> = ({ options }) => {
+export const MultiSelectInput: FC<MultiSelectInputProps> = ({ options }) => {
   const [selectedOptions, setSelectedOption] = useState<number[]>([]);
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

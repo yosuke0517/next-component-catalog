@@ -1,7 +1,7 @@
 
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { MouseEventHandler, ReactNode } from "react";
-import { MultiSelectInput, IMultiSelectInputProps } from "./MultiSelectInput";
+import { MultiSelectInput, MultiSelectInputProps } from "./MultiSelectInput";
 // @ts-ignore // mdxでドキュメントも作成することができる（今回はパス）
 // import MDXDocument from "./AttachableIconButton.mdx";
 
@@ -37,7 +37,7 @@ const options = [
 
 export const Main = (
   props: JSX.IntrinsicAttributes & {
-    type: IMultiSelectInputProps;
+    type: MultiSelectInputProps;
     callback?: MouseEventHandler<HTMLButtonElement> | undefined;
     children: ReactNode;
   }
