@@ -1,7 +1,7 @@
-import NextAuth, { AuthOptions, DefaultSession } from "next-auth";
-import GithubProvider from "next-auth/providers/github";
-import EmailProvider from "next-auth/providers/email";
-import { SupabaseAdapter } from "@next-auth/supabase-adapter";
+import NextAuth, { AuthOptions, DefaultSession } from 'next-auth';
+import GithubProvider from 'next-auth/providers/github';
+import EmailProvider from 'next-auth/providers/email';
+import { SupabaseAdapter } from '@next-auth/supabase-adapter';
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -9,13 +9,13 @@ import { SupabaseAdapter } from "@next-auth/supabase-adapter";
  *
  * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
  */
-declare module "next-auth" {
+declare module 'next-auth' {
   interface Session extends DefaultSession {
     user: {
       id: string;
       // ...other properties
       // role: UserRole;
-    } & DefaultSession["user"];
+    } & DefaultSession['user'];
   }
 
   // interface User {
@@ -50,8 +50,9 @@ export const authOptions: AuthOptions = {
     url: process.env.NEXT_PUBLIC_SUPABASE_URL as string,
     secret: process.env.SUPABASE_SERVICE_ROLE_KEY as string,
   }),
+  secret: process.env.NEXTAUTH_SECRET,
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
   },
 };
 export default NextAuth(authOptions);
