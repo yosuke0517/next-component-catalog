@@ -1,5 +1,5 @@
-import { FC, MouseEventHandler, ReactNode, useState } from "react";
-import cn from "classnames";
+import { FC, MouseEventHandler, ReactNode, useState } from 'react';
+import cn from 'classnames';
 
 type ActionButtonProps = {
   type: ActionButtonType;
@@ -7,10 +7,10 @@ type ActionButtonProps = {
   children: ReactNode;
 };
 
-export type ActionButtonType = "main" | "sub" | "cancel";
+export type ActionButtonType = 'main' | 'sub' | 'cancel';
 
 export const ActionButton: FC<ActionButtonProps> = ({
-  type = "main",
+  type = 'main',
   children,
   callback,
 }) => {
@@ -24,17 +24,17 @@ export const ActionButton: FC<ActionButtonProps> = ({
     setLoading(false);
   };
 
-  const btnClass = cn("rounded-full text-white font-bold py-2 px-4", {
-    "bg-orange-500": type === "main",
-    "bg-blue-500": type === "sub",
-    "border border-orange-500 bg-white text-orange-400": type === "cancel",
-    "hover:opacity-80": true,
+  const btnClass = cn('rounded-full text-white font-bold py-2 px-4', {
+    'bg-orange-500': type === 'main',
+    'bg-blue-500': type === 'sub',
+    'border border-orange-500 bg-white text-orange-400': type === 'cancel',
+    'hover:opacity-80': true,
   });
 
   return (
     <button className={btnClass} onClick={handleClick}>
-      {loading ? "Loading..." : ""}
-      {children ?? ""}
+      {loading ? 'Loading...' : ''}
+      {children ?? ''}
     </button>
   );
 };

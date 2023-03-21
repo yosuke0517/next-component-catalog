@@ -1,4 +1,4 @@
-import { signIn } from "next-auth/react";
+import { signIn } from 'next-auth/react';
 
 export const Auth = () => {
   return (
@@ -7,7 +7,7 @@ export const Auth = () => {
         <li>
           <button
             className="w-full rounded bg-blue-600 py-2 px-4 font-bold text-white hover:opacity-80"
-            onClick={() => signIn("github")}
+            onClick={() => signIn('github')}
           >
             GitHub アカウントでログイン
           </button>

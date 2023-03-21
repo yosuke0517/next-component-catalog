@@ -1,5 +1,5 @@
-import { FC, ReactNode } from "react";
-import Head from "next/head";
+import { FC, ReactNode } from 'react';
+import Head from 'next/head';
 
 type Props = {
   title: string;
@@ -8,7 +8,7 @@ type Props = {
 
 export const Layout: FC<Props> = ({
   children,
-  title = "Next.js Component Catalog",
+  title = 'Next.js Component Catalog',
 }) => {
   return (
     <>
