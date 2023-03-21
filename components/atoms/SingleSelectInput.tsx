@@ -15,7 +15,7 @@ export const SingleSelectInput: FC<InputSelectProps> = ({ options }) => {
   };
 
   return (
-    <div className="relative flex ">
+    <div className="relative flex w-full">
       <select
         id="my-select"
         value={selectedOption}
