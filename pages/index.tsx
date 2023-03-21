@@ -9,6 +9,7 @@ import { MultiSelectInput } from "~/components/atoms/MultiSelectInput";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import React from "react";
 
+// テストでーた TODO supabaseから取得するようにする
 const options = [
   { id: 0, name: "Option 1" },
   { id: 1, name: "Option 2" },
