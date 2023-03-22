@@ -1,16 +1,41 @@
-import "~/styles/globals.css";
-import { SessionProvider } from "next-auth/react";
-import type { AppProps, AppType } from "next/app";
-import { Session } from "next-auth";
+import '~/styles/globals.css';
+import type { AppProps, AppType } from 'next/app';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { supabase } from '~/utils/supabase';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
-const MyApp: AppType<{ session: Session | null }> = ({
-  Component,
-  pageProps: { session, ...pageProps },
-}) => {
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
+
+const MyApp: AppType = ({ Component, pageProps }) => {
+  const { push, pathname } = useRouter();
+  // ユーザの認証アクションに応じて処理が可能
+  const validateSession = () => {
+    supabase.auth.onAuthStateChange((event, _) => {
+      if (event === 'SIGNED_IN') {
+        push('/');
+      }
+      if (event === 'SIGNED_OUT') {
+        push('/login');
+      }
+    });
+  };
+  useEffect(() => {
+    validateSession();
+  }, []);
   return (
-    <SessionProvider session={session}>
+    <QueryClientProvider client={queryClient}>
       <Component {...pageProps} />
-    </SessionProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 };
 
