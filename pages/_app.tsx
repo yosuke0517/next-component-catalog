@@ -17,6 +17,7 @@ const queryClient = new QueryClient({
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   const { push, pathname } = useRouter();
+  const user = supabase.auth.user();
   // ユーザの認証アクションに応じて処理が可能
   const validateSession = () => {
     supabase.auth.onAuthStateChange((event, _) => {
@@ -29,6 +30,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
     });
   };
   useEffect(() => {
+    if (!user) push('/login');
     validateSession();
   }, []);
   return (
